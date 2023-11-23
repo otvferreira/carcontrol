@@ -1,15 +1,13 @@
 package com.carcontrol.entity.usuario;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @AllArgsConstructor
 @Table(name = "user")
 @Getter
 @Setter
+@Builder
 @Entity
 @EqualsAndHashCode(of = "id")
 public class UsuarioEntity {

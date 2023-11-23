@@ -1,21 +1,25 @@
 package com.carcontrol.service;
 
+import com.carcontrol.controller.dto.UsuarioDTO;
+import com.carcontrol.entity.usuario.UsuarioEntity;
+import com.carcontrol.repository.UsuarioRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 @Service
 public class UsuarioService {
 
-    private Long id;
-    private String nome;
-    private String usuario;
-    private String senha;
-    private String email;
+    @Autowired
+    UsuarioRepository usuarioRepository;
+    public void salvar(UsuarioDTO usuarioDTO){
+        UsuarioEntity usuarioEntity = UsuarioEntity.builder()
+                                .nome(usuarioDTO.getNome())
+                                .usuario(usuarioDTO.getUsuario())
+                                .senha(usuarioDTO.getSenha())
+                                .email(usuarioDTO.getEmail())
+                                .build();
 
-    public UsuarioService(Long id, String nome, String usuario, String senha, String email) {
-        this.id = id;
-        this.nome = nome;
-        this.usuario = usuario;
-        this.senha = senha;
-        this.email = email;
+        usuarioRepository.save(usuarioEntity);
     }
 }
