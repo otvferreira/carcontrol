@@ -1,4 +1,4 @@
-package com.carcontrol.controller.dto;
+package com.carcontrol.api.controller.dto;
 
 import lombok.Data;
 
