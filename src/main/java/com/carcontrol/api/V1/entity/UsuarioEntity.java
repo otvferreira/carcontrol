@@ -1,4 +1,4 @@
-package com.carcontrol.api.entity.usuario;
+package com.carcontrol.api.V1.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -43,6 +43,7 @@ public class UsuarioEntity {
 
     @PrePersist
     public void prePersist() {
+
         this.ativo = true;
     }
 
