@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/V1/users")
+@RequestMapping("/V1/usuario")
 public class UsuarioController {
 
     @Autowired
@@ -20,16 +20,17 @@ public class UsuarioController {
     @Autowired
     private UsuarioRepository repository;
 
-    @GetMapping("/search")
+    @GetMapping("/buscar")
     public List<Usuario> listar() {
         return service.listarTodos();
     }
 
-    @GetMapping("/search/{usuario}")
+    @GetMapping("/buscar/{usuario}")
     public Usuario buscar(@PathVariable String usuario){
         return service.buscar(usuario);
     }
-    @PostMapping("/register")
+
+    @PostMapping("/registrar")
     public ResponseEntity<Object> adicionar(@RequestBody UsuarioDTOComSenha usuario){
         service.salvar(usuario);
 

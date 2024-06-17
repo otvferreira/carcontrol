@@ -7,44 +7,37 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.util.Date;
 import java.util.UUID;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Table(name = "usuario")
+@Entity
+@Table(name = "veiculo")
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
-@Entity
 @EqualsAndHashCode
-public class Usuario {
+public class Veiculo {
 
-    @EqualsAndHashCode.Include
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @Column(nullable = false)
-    private String nome;
+    private String modelo;
+
+    private String marca;
 
     @Column(unique = true)
-    private String usuario;
+    private String placa;
 
-    private String senha;
+    private Long km_inicial;
 
-    @Column(unique = true)
-    private String email;
+    private Long km_atual;
 
     @CreationTimestamp
     @Column(columnDefinition = "datetime")
-    private Date datainc;
+    private Date data_inc;
 
     private boolean ativo;
 
     private Character delet;
-
-    @PrePersist
-    public void prePersist() {
-
-        this.ativo = true;
-    }
 
 }
