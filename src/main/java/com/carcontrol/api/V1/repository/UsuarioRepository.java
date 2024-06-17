@@ -1,12 +1,12 @@
 package com.carcontrol.api.V1.repository;
 
-import com.carcontrol.api.V1.entity.UsuarioEntity;
+import com.carcontrol.api.V1.model.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface UsuarioRepository extends JpaRepository<UsuarioEntity, Long> {
-    Optional<UsuarioEntity> findByUsuario(String usuario);
+public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
+    Optional<Usuario> findByUsuario(String usuario);
 }

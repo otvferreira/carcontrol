@@ -1,4 +1,4 @@
-package com.carcontrol.api.V1.entity;
+package com.carcontrol.api.V1.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -15,7 +15,7 @@ import java.util.UUID;
 @Builder
 @Entity
 @EqualsAndHashCode
-public class UsuarioEntity {
+public class Usuario {
 
     @EqualsAndHashCode.Include
     @Id

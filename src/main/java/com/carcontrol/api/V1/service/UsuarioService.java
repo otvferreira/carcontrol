@@ -1,9 +1,8 @@
 package com.carcontrol.api.V1.service;
 
-import com.carcontrol.api.V1.controller.dto.UsuarioDTO;
 import com.carcontrol.api.V1.controller.dto.UsuarioDTOComSenha;
 import com.carcontrol.api.V1.repository.UsuarioRepository;
-import com.carcontrol.api.V1.entity.UsuarioEntity;
+import com.carcontrol.api.V1.model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,12 +16,12 @@ public class UsuarioService {
     UsuarioRepository usuarioRepository;
 
 
-    public List<UsuarioEntity> listarTodos(){
+    public List<Usuario> listarTodos(){
 
         return usuarioRepository.findAll();
     }
 
-    public UsuarioEntity buscar(String usuario){
+    public Usuario buscar(String usuario){
         return usuarioRepository.findByUsuario(usuario)
                 .orElseThrow();
 
@@ -30,14 +29,14 @@ public class UsuarioService {
 
 
     public void salvar(UsuarioDTOComSenha usuarioDTO){
-        UsuarioEntity usuarioEntity = UsuarioEntity.builder()
+        Usuario usuario = Usuario.builder()
                                 .nome(usuarioDTO.getNome())
                                 .usuario(usuarioDTO.getUsuario())
                                 .senha(usuarioDTO.getSenha())
                                 .email(usuarioDTO.getEmail())
                                 .build();
 
-        usuarioRepository.save(usuarioEntity);
+        usuarioRepository.save(usuario);
     }
 
 }
