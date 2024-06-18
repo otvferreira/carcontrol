@@ -1,14 +1,13 @@
 package com.carcontrol.api.V1.service;
 
-import com.carcontrol.api.V1.controller.dto.UsuarioDTOComSenha;
 import com.carcontrol.api.V1.controller.dto.VeiculoComKmDTO;
-import com.carcontrol.api.V1.model.Usuario;
 import com.carcontrol.api.V1.model.Veiculo;
 import com.carcontrol.api.V1.repository.VeiculoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class VeiculoService {
@@ -20,9 +19,8 @@ public class VeiculoService {
         return veiculoRepository.findAll();
     }
 
-    public Veiculo buscar(String placa){
-        return veiculoRepository.findByPlaca(placa)
-                .orElseThrow();
+    public Optional<Veiculo> buscar(String placa) throws Exception {
+        return veiculoRepository.findByPlaca(placa);
     }
 
     public void salvar(VeiculoComKmDTO veiculoDTO){
@@ -35,5 +33,7 @@ public class VeiculoService {
                 .build();
         veiculoRepository.save(veiculo);
     }
+
+
 
 }
