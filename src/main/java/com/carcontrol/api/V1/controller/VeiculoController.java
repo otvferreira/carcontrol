@@ -1,10 +1,8 @@
 package com.carcontrol.api.V1.controller;
 
 import com.carcontrol.api.V1.controller.dto.VeiculoComKmDTO;
-import com.carcontrol.api.V1.controller.dto.VeiculoDTO;
 import com.carcontrol.api.V1.model.Veiculo;
 import com.carcontrol.api.V1.service.VeiculoService;
-import jakarta.annotation.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

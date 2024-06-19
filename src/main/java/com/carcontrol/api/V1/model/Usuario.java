@@ -39,10 +39,8 @@ public class Usuario {
 
     private boolean ativo;
 
-    private Character delet;
-
     @PrePersist
-    public void prePersist() {
+    public void ativar() {
 
         this.ativo = true;
     }

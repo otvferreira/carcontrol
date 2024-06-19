@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -21,10 +22,8 @@ public class UsuarioService {
         return usuarioRepository.findAll();
     }
 
-    public Usuario buscar(String usuario){
-        return usuarioRepository.findByUsuario(usuario)
-                .orElseThrow();
-
+    public Optional<Usuario> buscar(String usuario){
+        return usuarioRepository.findByUsuario(usuario);
     }
 
 

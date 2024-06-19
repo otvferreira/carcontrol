@@ -38,6 +38,9 @@ public class Veiculo {
 
     private boolean ativo;
 
-    private Character delet;
+    @PrePersist
+    public void ativar() {
 
+        this.ativo = true;
+    }
 }

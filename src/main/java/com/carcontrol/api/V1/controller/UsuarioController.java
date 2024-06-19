@@ -5,10 +5,12 @@ import com.carcontrol.api.V1.model.Usuario;
 import com.carcontrol.api.V1.controller.dto.UsuarioDTOComSenha;
 import com.carcontrol.api.V1.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/V1/usuario")
@@ -26,15 +28,18 @@ public class UsuarioController {
     }
 
     @GetMapping("/buscar/{usuario}")
-    public Usuario buscar(@PathVariable String usuario){
+    public Optional<Usuario> buscar(@PathVariable String usuario){
         return service.buscar(usuario);
     }
 
     @PostMapping("/registrar")
-    public ResponseEntity<Object> adicionar(@RequestBody UsuarioDTOComSenha usuario){
-        service.salvar(usuario);
+    public ResponseEntity<String> adicionar(@RequestBody UsuarioDTOComSenha usuario){
+        if (service.buscar(usuario.getUsuario()).isPresent()) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Nome de usuário já está sendo utilizado.");
+        }
 
-        return ResponseEntity.ok("Usuário criado com sucesso.");
+        service.salvar(usuario);
+        return ResponseEntity.ok("Usuário cadastrado com sucesso.");
     }
 
 }
