@@ -12,7 +12,7 @@ public class EmpresaService {
     @Autowired
     EmpresaRepository empresaRepository;
 
-    public Empresa salvar(EmpresaDTO empresaDTO) {
+    public Empresa salvarEmpresa(EmpresaDTO empresaDTO) {
         Empresa empresa = Empresa.builder()
                 .nome(empresaDTO.getNome())
                 .razao(empresaDTO.getRazao())
@@ -26,13 +26,13 @@ public class EmpresaService {
         return empresaRepository.save(empresa);
     }
 
-    public Empresa buscar(String cnpjEmp){
+    public Empresa buscarEmpresa(String cnpjEmp){
         return empresaRepository.findBycnpj(cnpjEmp)
                 .orElseThrow();
     }
 
-    public void excluir(String cnpj){
-        Empresa empresa = buscar(cnpj);
+    public void excluirEmpresa(String cnpj){
+        Empresa empresa = buscarEmpresa(cnpj);
 
         empresaRepository.deleteById(empresa.getId());
         empresaRepository.flush();

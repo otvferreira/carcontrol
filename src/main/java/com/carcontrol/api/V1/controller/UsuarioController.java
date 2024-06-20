@@ -24,21 +24,21 @@ public class UsuarioController {
 
     @GetMapping("/buscar")
     public List<Usuario> listar() {
-        return service.listarTodos();
+        return service.listarUsuario();
     }
 
     @GetMapping("/buscar/{usuario}")
     public Optional<Usuario> buscar(@PathVariable String usuario){
-        return service.buscar(usuario);
+        return service.buscarUsuario(usuario);
     }
 
     @PostMapping("/registrar")
     public ResponseEntity<String> adicionar(@RequestBody UsuarioDTOComSenha usuario){
-        if (service.buscar(usuario.getUsuario()).isPresent()) {
+        if (service.buscarUsuario(usuario.getUsuario()).isPresent()) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Nome de usuário já está sendo utilizado.");
         }
 
-        service.salvar(usuario);
+        service.salvarUsuario(usuario);
         return ResponseEntity.ok("Usuário cadastrado com sucesso.");
     }
 

@@ -17,17 +17,17 @@ public class UsuarioService {
     UsuarioRepository usuarioRepository;
 
 
-    public List<Usuario> listarTodos(){
+    public List<Usuario> listarUsuario(){
 
         return usuarioRepository.findAll();
     }
 
-    public Optional<Usuario> buscar(String usuario){
+    public Optional<Usuario> buscarUsuario(String usuario){
         return usuarioRepository.findByUsuario(usuario);
     }
 
 
-    public void salvar(UsuarioDTOComSenha usuarioDTO){
+    public void salvarUsuario(UsuarioDTOComSenha usuarioDTO){
         Usuario usuario = Usuario.builder()
                                 .nome(usuarioDTO.getNome())
                                 .usuario(usuarioDTO.getUsuario())
@@ -37,5 +37,6 @@ public class UsuarioService {
 
         usuarioRepository.save(usuario);
     }
+
 
 }

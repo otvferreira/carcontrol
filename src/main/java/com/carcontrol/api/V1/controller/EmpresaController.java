@@ -27,12 +27,12 @@ public class EmpresaController {
 
     @GetMapping("/buscar/{cnpjEmp}")
     public Empresa buscar(@PathVariable String cnpjEmp){
-        return empresaService.buscar(cnpjEmp);
+        return empresaService.buscarEmpresa(cnpjEmp);
     }
 
     @PostMapping("/registrar")
     public Empresa registrar(@RequestBody EmpresaDTO empresa){
-        return empresaService.salvar(empresa);
+        return empresaService.salvarEmpresa(empresa);
 
     }
 
@@ -45,7 +45,7 @@ public class EmpresaController {
 
     @DeleteMapping("/excluir/{cnpjEmp}")
     public void excluir(@PathVariable String cnpjEmp){
-        empresaService.excluir(cnpjEmp);
+        empresaService.excluirEmpresa(cnpjEmp);
 
     }
 

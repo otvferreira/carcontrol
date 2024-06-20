@@ -15,15 +15,15 @@ public class VeiculoService {
     @Autowired
     VeiculoRepository veiculoRepository;
 
-    public List<Veiculo> listar(){
+    public List<Veiculo> listarVeiculo(){
         return veiculoRepository.findAll();
     }
 
-    public Optional<Veiculo> buscar(String placa) throws Exception {
+    public Optional<Veiculo> buscarVeiculo(String placa) throws Exception {
         return veiculoRepository.findByPlaca(placa);
     }
 
-    public void salvar(VeiculoComKmDTO veiculoDTO){
+    public void salvarVeiculo(VeiculoComKmDTO veiculoDTO){
         Veiculo veiculo = Veiculo.builder()
                 .modelo(veiculoDTO.getModelo())
                 .marca(veiculoDTO.getMarca())
