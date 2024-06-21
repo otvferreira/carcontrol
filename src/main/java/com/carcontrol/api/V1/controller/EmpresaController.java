@@ -36,12 +36,20 @@ public class EmpresaController {
 
     }
 
+    @PutMapping("/status/{cnpj}")
+    public void status(String cnpj){
+        Empresa empresa = empresaService.buscarEmpresa(cnpj);
+        empresa.ativar();
+
+        empresaRepository.save(empresa);
+    }
     /*/
     @PutMapping("/atualizar/{cnpj}")
     public Empresa atualizar(@PathVariable String cnpj, @RequestBody EmpresaDTO empresaDTO){
         return
     }
     /*/
+
 
     @DeleteMapping("/excluir/{cnpjEmp}")
     public void excluir(@PathVariable String cnpjEmp){

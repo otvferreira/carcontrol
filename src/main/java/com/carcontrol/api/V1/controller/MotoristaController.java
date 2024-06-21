@@ -21,6 +21,7 @@ public class MotoristaController {
     @Autowired
     MotoristaRepository motoristaRepository;
 
+    @GetMapping("/listar")
     public List<Motorista> listar(){
         return motoristaRepository.findAll();
     }
@@ -37,16 +38,15 @@ public class MotoristaController {
 
     }
 
-    @DeleteMapping("/desativar/{cpfcnpj}")
-    public void desativar(@PathVariable String cpfcnpj){
+    @PutMapping("/status/{cpfcnpj}")
+    public void status(@PathVariable String cpfcnpj){
         Motorista motorista = motoristaService.buscarMotorista(cpfcnpj);
         motorista.ativarDesativar();
 
         motoristaRepository.save(motorista);
-
     }
 
-    @PutMapping("/{cpfcnpj}")
+    @PutMapping("/atualizar/{cpfcnpj}")
     public ResponseEntity<Motorista> atualizarAtributoMotorista(@PathVariable String cpfcnpj, @RequestBody Map<String, Object> atributosAtualizados) {
         Motorista motorista = motoristaService.buscarMotorista(cpfcnpj);
         if (motorista != null) {

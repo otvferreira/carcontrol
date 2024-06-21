@@ -39,9 +39,12 @@ public class Empresa {
 
     private String delet;
 
-    @PrePersist
     public void ativar(){
-        this.ativo = true;
+        if (this.ativo) {
+            this.ativo = false;
+        } else {
+            this.ativo = true;
+        }
     }
 
 }

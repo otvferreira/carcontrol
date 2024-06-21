@@ -41,8 +41,11 @@ public class Usuario {
 
     @PrePersist
     public void ativar() {
-
-        this.ativo = true;
+        if (this.ativo) {
+            this.ativo = false;
+        } else {
+            this.ativo = true;
+        }
     }
 
 }
