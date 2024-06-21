@@ -39,11 +39,12 @@ public class MotoristaController {
     }
 
     @PutMapping("/status/{cpfcnpj}")
-    public void status(@PathVariable String cpfcnpj){
+    public ResponseEntity<Motorista> status(@PathVariable String cpfcnpj){
         Motorista motorista = motoristaService.buscarMotorista(cpfcnpj);
         motorista.ativarDesativar();
 
         motoristaRepository.save(motorista);
+        return ResponseEntity.ok(motorista);
     }
 
     @PutMapping("/atualizar/{cpfcnpj}")
@@ -52,6 +53,9 @@ public class MotoristaController {
         if (motorista != null) {
             if (atributosAtualizados.containsKey("setor")) {
                 motorista.setSetor(atributosAtualizados.get("setor").toString());
+            }
+            if (atributosAtualizados.containsKey("nome")) {
+                motorista.setNome(atributosAtualizados.get("nome").toString());
             }
 
             motoristaRepository.save(motorista);

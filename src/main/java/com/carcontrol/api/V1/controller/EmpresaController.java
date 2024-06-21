@@ -37,7 +37,7 @@ public class EmpresaController {
     }
 
     @PutMapping("/status/{cnpj}")
-    public void status(String cnpj){
+    public void status(@PathVariable String cnpj){
         Empresa empresa = empresaService.buscarEmpresa(cnpj);
         empresa.ativar();
 
