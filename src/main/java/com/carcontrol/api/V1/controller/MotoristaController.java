@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -47,7 +46,7 @@ public class MotoristaController {
 
     }
 
-    @PatchMapping("/{cpfcnpj}")
+    @PutMapping("/{cpfcnpj}")
     public ResponseEntity<Motorista> atualizarAtributoMotorista(@PathVariable String cpfcnpj, @RequestBody Map<String, Object> atributosAtualizados) {
         Motorista motorista = motoristaService.buscarMotorista(cpfcnpj);
         if (motorista != null) {
@@ -62,7 +61,4 @@ public class MotoristaController {
             return ResponseEntity.notFound().build();
         }
     }
-}
-
-
 }
