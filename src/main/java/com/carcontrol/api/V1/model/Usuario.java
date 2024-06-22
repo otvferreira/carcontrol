@@ -30,8 +30,9 @@ public class Usuario {
 
     private String senha;
 
-    @Column(unique = true)
     private String email;
+
+    private String telefone;
 
     @CreationTimestamp
     @Column(columnDefinition = "datetime")

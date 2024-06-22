@@ -22,8 +22,10 @@ public class UsuarioService {
         return usuarioRepository.findAll();
     }
 
-    public Optional<Usuario> buscarUsuario(String usuario){
-        return usuarioRepository.findByUsuario(usuario);
+    public Usuario buscarUsuario(String usuario){
+
+        return usuarioRepository.findByUsuario(usuario)
+                .orElseThrow();
     }
 
 
