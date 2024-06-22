@@ -65,4 +65,10 @@ public class MotoristaController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @DeleteMapping("/deletar/{cpfcnpj}")
+    public void deletar(@PathVariable String cpfcnpj){
+        Motorista motorista = motoristaService.buscarMotorista(cpfcnpj);
+        motoristaRepository.deleteById(motorista.getId());
+    }
 }
