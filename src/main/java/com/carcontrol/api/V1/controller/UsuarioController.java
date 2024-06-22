@@ -53,7 +53,7 @@ public class UsuarioController {
                 usuarioatt.setEmail(atributosAtualizados.get("email").toString());
             }
             if (atributosAtualizados.containsKey("telefone")) {
-                usuarioatt.setEmail(atributosAtualizados.get("telefone").toString());
+                usuarioatt.setTelefone(atributosAtualizados.get("telefone").toString());
             }
 
             repository.save(usuarioatt);
