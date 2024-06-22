@@ -37,8 +37,6 @@ public class Empresa {
 
     private boolean ativo;
 
-    private String delet;
-
     public void ativar(){
         if (this.ativo) {
             this.ativo = false;

@@ -1,6 +1,7 @@
 package com.carcontrol.api.V1.controller;
 
 import com.carcontrol.api.V1.controller.dto.VeiculoComKmDTO;
+import com.carcontrol.api.V1.model.Motorista;
 import com.carcontrol.api.V1.model.Veiculo;
 import com.carcontrol.api.V1.service.VeiculoService;
 import org.springframework.beans.factory.annotation.Autowired;
