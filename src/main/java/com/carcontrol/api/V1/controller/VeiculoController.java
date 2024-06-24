@@ -21,25 +21,23 @@ public class VeiculoController {
 
     @GetMapping("/buscar")
     public List<Veiculo> listarTodos(){
+
         return veiculoService.listarVeiculo();
     }
 
     @GetMapping("/buscar/{placa}")
-    public Optional<Veiculo> buscar(@PathVariable String placa) throws Exception{
+    public Veiculo buscar(@PathVariable String placa){
 
-        return Optional.ofNullable(veiculoService.buscarVeiculo(placa)
-                .orElseThrow(() -> new Exception("Veiculo não cadastrado")));
+        return veiculoService.buscarVeiculo(placa);
     }
 
     @PostMapping("/registrar")
     public ResponseEntity<String> salvar(@RequestBody VeiculoComKmDTO veiculo) throws Exception {
 
-        if((veiculoService.buscarVeiculo(veiculo.getPlaca())).isPresent()) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("Veículo já cadastrado");
-        }
-
         veiculoService.salvarVeiculo(veiculo);
         return ResponseEntity.ok("Veículo cadastrado com sucesso");
     }
+
+
 
 }

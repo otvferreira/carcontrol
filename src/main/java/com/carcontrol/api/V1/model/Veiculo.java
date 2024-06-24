@@ -38,9 +38,23 @@ public class Veiculo {
 
     private boolean ativo;
 
-    @PrePersist
-    public void ativar() {
+    private boolean ocupado;
 
-        this.ativo = true;
+    @PrePersist
+    public void ativardesativar() {
+        if (this.ativo) {
+            this.ativo = false;
+        } else {
+            this.ativo = true;
+        }
+    }
+
+    @PrePersist
+    public void ocupardesocupar() {
+        if (this.ocupado) {
+            this.ocupado = false;
+        } else {
+            this.ocupado = true;
+        }
     }
 }

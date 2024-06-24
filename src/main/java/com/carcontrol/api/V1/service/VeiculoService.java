@@ -19,8 +19,9 @@ public class VeiculoService {
         return veiculoRepository.findAll();
     }
 
-    public Optional<Veiculo> buscarVeiculo(String placa) throws Exception {
-        return veiculoRepository.findByPlaca(placa);
+    public Veiculo buscarVeiculo(String placa) {
+        return veiculoRepository.findByPlaca(placa)
+                .orElseThrow();
     }
 
     public void salvarVeiculo(VeiculoComKmDTO veiculoDTO){
