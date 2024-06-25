@@ -29,12 +29,10 @@ public class VeiculoService {
                 .modelo(veiculoDTO.getModelo())
                 .marca(veiculoDTO.getMarca())
                 .placa(veiculoDTO.getPlaca())
-                .km_inicial(veiculoDTO.getKm_inicial())
-                .km_atual(veiculoDTO.getKm_atual())
+                .km_inicial(String.valueOf(veiculoDTO.getKm_inicial()))
+                .km_atual(String.valueOf(veiculoDTO.getKm_atual()))
                 .build();
         veiculoRepository.save(veiculo);
     }
-
-
 
 }

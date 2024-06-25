@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.UUID;
 
 @Entity
-@Table(name = "veiculo")
+@Table(name = "veiculos")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -28,9 +28,9 @@ public class Veiculo {
     @Column(unique = true)
     private String placa;
 
-    private Long km_inicial;
+    private String km_inicial;
 
-    private Long km_atual;
+    private String km_atual;
 
     @CreationTimestamp
     @Column(columnDefinition = "datetime")
@@ -49,7 +49,6 @@ public class Veiculo {
         }
     }
 
-    @PrePersist
     public void ocupardesocupar() {
         if (this.ocupado) {
             this.ocupado = false;
