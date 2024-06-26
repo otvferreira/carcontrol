@@ -9,7 +9,7 @@ import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "usuario")
+@Table(name = "usuarios")
 @Getter
 @Setter
 @Builder
@@ -28,9 +28,9 @@ public class Usuario {
     @Column(unique = true)
     private String usuario;
 
-    private String senha;
-
     private String email;
+
+    private String senha;
 
     private String telefone;
 
