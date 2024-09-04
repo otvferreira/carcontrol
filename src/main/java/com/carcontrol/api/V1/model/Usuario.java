@@ -40,6 +40,9 @@ public class Usuario {
 
     private boolean ativo;
 
+    @Column(nullable = false)
+    private String role;
+
     @PrePersist
     public void ativar() {
         if (this.ativo) {
